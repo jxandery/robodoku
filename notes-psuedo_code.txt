@@ -1,0 +1,3 @@
+Assumptions:
+- starting w/ a 4x4 array
+- input is as a string text of 16 characters seperated every 4th character by \n

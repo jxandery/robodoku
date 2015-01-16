@@ -1,0 +1,63 @@
+Assumptions:
+- starting w/ a 4x4 array
+- can be solved simply through deduction, comparing rows, columns and squares
+  - does not need to be solved by guessing a potential solution
+
+Psuedocode
+Step 1:
+Level(0) = L0
+- input as a string text of 16 characters
+  - every 4th character will be seperated by \n
+
+Step 2:
+Rows
+Level(1) = L1
+- take in string and convert into an array of 4 rows seperated by "\n"
+  - if the character in the string is a " ", then converting into an array with chars will change "(spaces)" to 0
+  - if the character is a 0, then replace that with an object array
+Level(2) = L2
+- each of these rows has 4 objects. these objects can be either an array or a number
+  - the object array will contain the potential solutions - [1,2,3,4]
+Level(3) = L3
+- compare the L-1 array with the arrays in L3
+  - if the nums in L3 contain L-2 nums, delete those nums in L3
+  - if the array in L3 contains only a single element, flatten L3
+  - if the array in L2 contains only a single element, flatten L2
+
+Step 3: Repeat Step 2 for rows 2-4
+
+Step 4:
+Columns
+Level(1) =L1
+- create an object that coverts column (row[0]) into an array
+  - if the character is a 0, then replace that with an object array
+Level(2) = L2
+- each of these rows has 4 objects. these objects can be either an array or a number
+  - the object array will contain the potential solutions - [1,2,3,4]
+Level(3) = L3
+- compare the L1 array with the arrays in L3
+  - if the nums in L3 contain L2 nums, delete those nums in L3
+  - if the array in L3 contains only a single element, flatten L3
+  - if the array in L2 contains only a single element, flatten L2
+
+Step 5: Repeat step 4 for columns 2-4
+
+step 6:
+Squares
+Level(1) =L1
+- create an object that coverts column (row1[0,2] and row2[0,2]) into an array
+  - if the character is a 0, then replace that with an object array
+Level(2) = L2
+- each of these rows has 4 objects. these objects can be either an array or a number
+  - the object array will contain the potential solutions - [1,2,3,4]
+Level(3) = L3
+- compare the L1 array with the arrays in L3
+  - if the nums in L3 contain L2 nums, delete those nums in L3
+  - if the array in L3 contains only a single element, flatten L3
+  - if the array in L2 contains only a single element, flatten L2
+
+Step 7: Repeat step 6 for squares 2-4
+
+Step 8: Repeat steps 2-7 until solved
+
+Step 9: If it is still not solved, it's likely your 2nd assumption is not true
